@@ -19,36 +19,36 @@ public class MainActivity extends Activity {
     private int maxQuestions = 5;
     private String questions[][][] = {
             {
-                    {"Select two addresses that are not assignable to hosts"},
-                    {"check"},   // available options ['radio','check','edit']
-                    {"Broadcast Address", "Network Address", "", ""},
-                    {"Broadcast Address", "Default gateway", "Network Address", "Host Address"},
-                    {"", "", "", "",}
+                    {"Select two addresses that are not assignable to hosts"},   //question
+                    {"check"},      // Question type: available types ['radio','check','edit']
+                    {"Broadcast Address", "Network Address", "", ""}, // answer
+                    {"Broadcast Address", "Default gateway", "Network Address", "Host Address"}, // options
+                    {"", "", "", "",} // responses
             },
             {
-                    {"At what layer of the OSI model does routing occur?"},
-                    {"radio"},   // available options ['radio','check','edit']
-                    {"Network", "", "", ""},
-                    {"Network", "Transport", "Session", "Physical",},
-                    {"", "", "", "",}
+                    {"At what layer of the OSI model does routing occur?"},   //question
+                    {"radio"},      // Question type: available types ['radio','check','edit']
+                    {"Network", "", "", ""}, // answer
+                    {"Network", "Transport", "Session", "Physical",}, // options
+                    {"", "", "", "",} // responses
             },
             {
-                    {"Which of these addresses is not within 192.168.0.0/25 subnet?"},
-                    {"radio"},   // available options ['radio','check','edit']
-                    {"192.168.0.179", "", "", ""},
-                    {"192.168.0.1", "192.168.0.179", "192.168.0.22", "192.168.0.4"},
-                    {"", "", "", "",}
+                    {"Which of these addresses is not within 192.168.0.0/25 subnet?"},   //question
+                    {"radio"},      // Question type: available types ['radio','check','edit']
+                    {"192.168.0.179", "", "", ""}, // answer
+                    {"192.168.0.1", "192.168.0.179", "192.168.0.22", "192.168.0.4"}, // options
+                    {"", "", "", "",} // responses
             },
             {
-                    {"What is a device that splits broadcast domain?"},
-                    {"edit"},   // available options ['radio','check','edit']
-                    {"Router", "", "", ""},
-                    {"Option 1", "Router", "Option 3 - ans", "Option 4",},
-                    {"", "", "", "",}
+                    {"What is a device that splits broadcast domain?"},   //question
+                    {"edit"},      // Question type: available types ['radio','check','edit']
+                    {"Router", "", "", ""}, // answer
+                    {"Option 1", "Router", "Option 3 - ans", "Option 4",}, // options
+                    {"", "", "", "",} // responses
             },
             {
-                    {"What service resolves domain names IP addresses?"}, //question
-                    {"radio"},   // available types ['radio','check','edit']
+                    {"What service resolves domain names IP addresses?"},   //question
+                    {"radio"},   // Question type: available types ['radio','check','edit']
                     {"DNS", "", "", ""}, // answer
                     {"ARP", "CALEA", "DHCP", "DNS"}, // options
                     {"", "", "", "",} // responses
@@ -232,20 +232,20 @@ public class MainActivity extends Activity {
             setQuestionType(que_no);
 
             // checkboxes can have multiple answers
-            if (questionType == "check") {
+            if (questionType.equals("check")) {
 
                 // count the responses
                 int responseCount = 0;
                 boolean wrongResponseFound = false;
                 for (int x = 0; x < 4; x++) {
                     String thisResponse = questions[que_no][4][x].trim();
-                    if (thisResponse != "") {
+                    if (!thisResponse.equals("")) {
                         responseCount++;
 
                         // test whether it's a correct response
                         boolean noMatch = true;
                         for (int y = 0; y < 4; y++) {
-                            if (thisResponse == questions[que_no][2][y]) {
+                            if (thisResponse.equals(questions[que_no][2][y])) {
                                 noMatch = false;
                                 break;
                             }
@@ -262,7 +262,7 @@ public class MainActivity extends Activity {
                     // count the number of answers available
                     int answerCount = 0;
                     for (int x = 0; x < 4; x++) {
-                        if (questions[que_no][2][x] != "")
+                        if (!questions[que_no][2][x].equals(""))
                             answerCount++;
                     }
 
@@ -274,8 +274,8 @@ public class MainActivity extends Activity {
                     }
                 }
             } else {
-                String answer = questions[que_no][2][0].trim();
-                String response = questions[que_no][4][0].trim();
+                String answer = questions[que_no][2][0].trim().toUpperCase();
+                String response = questions[que_no][4][0].trim().toUpperCase();
                 if (response.equals(answer)) {   // correct
                     totalScore += 1;
                     correctResponses += 1;
@@ -292,6 +292,10 @@ public class MainActivity extends Activity {
 
         TextView summaryScore = (TextView) findViewById(R.id.summary_score);
         summaryScore.setText(displayText);
+
+        String toastMessage = "You scored "+String.valueOf(correctResponses)+" out of ";
+        toastMessage += String.valueOf(maxQuestions);
+        Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
 
     }
 }
