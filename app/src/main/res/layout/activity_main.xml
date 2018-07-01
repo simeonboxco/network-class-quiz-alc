@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -29,100 +30,142 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/question_container"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="8dp">
 
-        <TextView
-            android:id="@+id/question"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:padding="8dp"
-            android:text="This is my question here"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/answer_edit_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
+            <LinearLayout
+                android:id="@+id/question_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Your answer here" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:padding="8dp"
+                    android:text="This is my question here"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/answer_check_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="visible">
+            <LinearLayout
+                android:id="@+id/answer_edit_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-        <CheckBox
-            android:id="@+id/check_item_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 1" />
+                <EditText
+                    android:id="@+id/answer_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Your answer here" />
+            </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/check_item_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 1" />
+            <LinearLayout
+                android:id="@+id/answer_check_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-        <CheckBox
-            android:id="@+id/check_item_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 1" />
+                <CheckBox
+                    android:id="@+id/check_item_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 1" />
 
-        <CheckBox
-            android:id="@+id/check_item_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option 1" />
+                <CheckBox
+                    android:id="@+id/check_item_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 2" />
 
-    </LinearLayout>
+                <CheckBox
+                    android:id="@+id/check_item_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 3" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/check_item_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option 4" />
 
-        <RadioButton
-            android:id="@+id/radio_option_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A. " />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/radio_option_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="B. " />
+            <RadioGroup
+                android:id="@+id/answer_radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radio_option_c"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="C. " />
+                <RadioButton
+                    android:id="@+id/radio_option_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A. " />
 
-        <RadioButton
-            android:id="@+id/radio_option_d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="D. " />
-    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radio_option_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B. " />
+
+                <RadioButton
+                    android:id="@+id/radio_option_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C. " />
+
+                <RadioButton
+                    android:id="@+id/radio_option_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D. " />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/summary_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:text="You have now come to the end of the quiz"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/summary_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/next_question_button"
@@ -133,6 +176,6 @@
             android:padding="8dp"
             android:text="Next Question"
             android:textColor="#fff" />
-    </RelativeLayout>
 
+    </RelativeLayout>
 </LinearLayout>
